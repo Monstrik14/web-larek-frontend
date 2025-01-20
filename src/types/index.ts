@@ -1,22 +1,35 @@
 import { EventEmitter } from "../components/base/events";
 
 // interface корзины скнопками + и -
-interface basketModel{
+interface IBasketModel{
   items: Map<string, number>;
   add(id:string):void;
   remove(id:string):void
 }
 
-// пример отображения товара в корзине
-
-interface Product {
+interface ILotItem {
+  
+}
+interface IProduct {
   id: string;
   title: string;
+  category: string;
+  description: string;
+  price: Map<number, string> | null;
+  image: string;
 }
-interface basketGoods {
-  items: Product[];
-  setItems (items: Product[]):void;
-  getItems (id:string):Product
+
+// пример отображения товара в корзине
+interface IBasketGoods {
+  items: IProduct[];
+  setItems (items: IProduct[]):void;
+  getItems (id:string):IProduct
+}
+
+interface Payment<T> { 
+  items: IProduct[]
+  payOnline: (obj: T) => T
+  payCash: (obj: T) => T
 }
 
 // отображение элемента разметки
@@ -29,10 +42,12 @@ interface IView {
   render(data?: object): HTMLElement;
 }
 
-//подгружае данные через api
+// подгружаемые данные через api
+ 
 
-api.getBasketgoods(){
-  .then(basketGoods.setItems.bind(basketGoods))
-  catch(err =>console.error(err))
+// фунеция осздания карточки 
+
+function createCard(template: HTMLTemplateElement, name: string) {
+  const cardElement = template.content.querySelector('.card-preview').cloneNode(true) as HTMLElement;
+  return cardElement 
 }
-

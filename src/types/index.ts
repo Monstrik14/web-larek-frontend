@@ -10,7 +10,7 @@ type category =
  | 'кнопка'
  | 'хард-скил';
 
-interface IProduct {
+export interface IProduct {
   id: string;
   title: string;
   category: category;
@@ -20,7 +20,7 @@ interface IProduct {
   buyButton: string;
 }
 
-interface IOrder{
+export interface IOrder{
   payment: payment;
   mail: string;
   phone: string;
@@ -29,34 +29,34 @@ interface IOrder{
   items: string[]
 }
 
-interface IBasket {
+export interface IBasket {
   items: string[];
   total: price;
 }
 
-interface IPage {
+export interface IPage {
   cards: IProduct[];
   total: number; 
 }
 
-interface IOrderResult {
+export interface IOrderResult {
   id: string;
   total: price;
 }
 
-interface IValidationForm {
+export interface IValidationForm {
 	valid: boolean; 
 	errors: string[]; 
 }
 
-interface IUserInfo {
+export interface IUserInfo {
   payment: payment;
   address: string;
   mail: string;
   phone: number;
 }
 
-interface IUserScenario {
+export interface IUserScenario {
   cardsCatalog: IProduct[];
   buyButton(): void;
   addToBasket(value: IProduct): void;

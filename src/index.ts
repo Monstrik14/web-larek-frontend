@@ -1,5 +1,16 @@
 import './scss/styles.scss';
 
+interface IPage {
+  catalog: HTMLElement[];
+}
+class Page implements IPage {
+  protected _catalog: HTMLElement;
+
+  constructor(protected container: HTMLElement){
+    this._catalog = this.container.querySelector('.gallery')
+  }
+}
+
 class ProductView {
   constructor () {
   }
@@ -18,11 +29,4 @@ Api. метод отображения товара (){
   .catch (err = > {
     console.error(err)
   })
-}
-
-// функция осздания карточки 
-
-function createCard(template: HTMLTemplateElement, name: string) {
-  const cardElement = template.content.querySelector('.card-preview').cloneNode(true) as HTMLElement;
-  return cardElement 
 }

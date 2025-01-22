@@ -2,15 +2,22 @@ import { EventEmitter } from "../components/base/events";
 import { Component } from "../components/base/components";
 
 type price = number | null
-type payment = 'cash' | 'online'
+type payment = 'cash' | 'card'
+type category =
+ | 'другое'
+ | 'софт-скил'
+ | 'дополнительное'
+ | 'кнопка'
+ | 'хард-скил';
 
 interface IProduct {
   id: string;
   title: string;
-  category: string;
+  category: category;
   description: string;
   price: price;
   image: string;
+  buyButton: string;
 }
 
 interface IOrder{
@@ -27,9 +34,38 @@ interface IBasket {
   total: price;
 }
 
+interface IPage {
+  cards: IProduct[];
+  total: number; 
+}
+
 interface IOrderResult {
   id: string;
   total: price;
+}
+
+interface IValidationForm {
+	valid: boolean; 
+	errors: string[]; 
+}
+
+interface IUserInfo {
+  payment: payment;
+  address: string;
+  mail: string;
+  phone: number;
+}
+
+interface IUserScenario {
+  cardsCatalog: IProduct[];
+  buyButton(): void;
+  addToBasket(value: IProduct): void;
+  placeOrder(): void;
+  deleteFromBasket(): void;
+  clearBasket(): void;
+  getItems(): void;
+  validateUserInfo(data: keyof IUserInfo, value: string): boolean; 
+  goForNewThings(): void;
 }
 
 // interface корзины скнопками + и -
@@ -51,14 +87,9 @@ interface Payment<T> {
   items: IProduct[]
   payOnline: (obj: T) => T
   payCash: (obj: T) => T
-  address: string
 }
 
 // отображение элемента разметки
-
-interface IProductConstructor {
-  new (): Component<IProduct>;
-}
 
 interface IView {
   render(data?: object): HTMLElement;

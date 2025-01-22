@@ -1,6 +1,7 @@
+import { IProduct } from '../ty';
 import { IEvents } from '../base/events';
 import { Model } from '../base/model';
-import { IProduct } from "../"
+
 
 export class UserScenario extends Model<IProduct> {
 	protected items: IProduct[] = [];

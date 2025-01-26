@@ -1,62 +1,50 @@
-import { EventEmitter } from "../components/base/events";
-import { Component } from "../components/base/components";
 
-type price = number | null
-type payment = 'cash' | 'card'
-type category =
- | 'другое'
- | 'софт-скил'
- | 'дополнительное'
- | 'кнопка'
- | 'хард-скил';
+type сategories =
+| 'soft-skill'
+| 'hard-skill'
+| 'additional'
+| 'other'
+| 'button';
 
-export interface IProduct {
-  id: string;
-  title: string;
-  category: category;
-  description: string;
-  price: price;
-  image: string;
-  buyButton: string;
-}
-
-export interface IOrder{
-  payment: payment;
-  mail: string;
-  phone: string;
-  address: string;
-  total: number;
-  items: string[]
-}
-
-export interface IBasket {
-  items: string[];
-  total: price;
-}
-
-export interface IPage {
+export interface IMainPage {
   cards: IProduct[];
   total: number; 
 }
 
-export interface IOrderResult {
+export interface IProduct {
   id: string;
-  total: price;
+  title: string;
+  image: string;
+  description: string;
+  category: сategories;
+  price: number | null;
+  buyProductBtn: string;
 }
 
-export interface IValidationForm {
-	valid: boolean; 
-	errors: string[]; 
+export interface IBasket {
+  items: string[];
+  total: number | null;
 }
 
-export interface IUserInfo {
-  payment: payment;
+export interface IOrder{
+  items: string[]
   address: string;
-  mail: string;
-  phone: number;
+  email: string;
+  phone: string;
+  paymentMethod: 'cash' | 'card'
+  total: number;
 }
 
-export interface IUserScenario {
-  
+export interface IValidation {
+  errors: string[]; 
+	validation: boolean; 
 }
+
+export interface IFinalOrder {
+  id: string;
+  total: number | null;
+}
+
+
+
 

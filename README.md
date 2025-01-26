@@ -99,9 +99,51 @@ yarn build
 
 ### Класс AppOperation
 
+#### Класс c основными данными и методами для управления приложением. 
 
+Cвойства:
+
+ - _items - товары (массив)
+ - _user - данны пользователя 
+ - _basket - товары в корзине (массив)
+ - _errors - ошибки валидации в полях
+ - cardPreview - открыта карточка товара с id
+
+#### Конструктор принимает объект с типом данных IProduct c частично используемыми свойствами данного интерфейса (Partial).
+
+Методы:
+
+ - setPreview()
+ - getBasketId()
+ - getItemById()
+ - addBasket()
+ - deleteBasket()
+ - clearBasket()
+ - validateContact()
+ - clearOrder()
+ - addOrderField()
+ - hasProductInBasket()
+ - clearOrderData()
+
+set():
+
+  - itemsList() - обновляет список товаров и запускает событие 'items:changed'
+  - userData() - обновляет данные пользователя
+
+get():
+
+  - itemsList()
+  - user()
+  - basketItems()
+  - totalBasketPrice()
+  - countBasket()
+  - formErrorsList()
 
 ## Классы
+
+
+
+
 
 ### Класс Component
 
@@ -133,41 +175,6 @@ yarn build
     'emit' - инициализация события
     'trigger' - возвращает функцию, при вызове которой инициализируется требуемое в параметрах событие
 
-
-
-
-
-### Класс AppState для работы с данными.
-
-Поля класса:
-items - 
-basket - 
-userData - 
-formErrors - 
-preview - 
-Конструктор - 
-Сеттеры:
-items()
-user() 
-Геттеры:
-itemsList()
-user()
-basketItems()
-totalBasketPrice()
-countBasket()
-formErrorsList()
-Методы:
-setPreview()
-getBasketId()
- getItemById()
-addBasket()
-deleteBasket()
- clearBasket()
- validateContact()
-clearOrder()
-addOrderField()
- hasProductInBasket()
- clearOrderData()
 
 ### Класс Page
 

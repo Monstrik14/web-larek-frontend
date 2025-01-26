@@ -1,4 +1,4 @@
-import { IProduct } from '../ty';
+import { IProduct } from '.. ';
 import { IEvents } from '../base/events';
 import { Model } from '../base/model';
 

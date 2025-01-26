@@ -57,40 +57,6 @@ export interface IUserInfo {
 }
 
 export interface IUserScenario {
-  cardsCatalog: IProduct[];
-  buyButton(): void;
-  addToBasket(value: IProduct): void;
-  placeOrder(): void;
-  deleteFromBasket(): void;
-  clearBasket(): void;
-  getItems(): void;
-  validateUserInfo(data: keyof IUserInfo, value: string): boolean; 
-  goForNewThings(): void;
+  
 }
 
-// interface корзины скнопками + и -
-interface IBasketModel{
-  items: Map<string, number>;
-  add(id:string):void;
-  remove(id:string):void
-}
-
-
-// пример отображения товара в корзине
-interface IBasketGoods {
-  items: IProduct[];
-  setItems (items: IProduct[]):void;
-  getItems (id:string):IProduct
-}
-
-interface Payment<T> { 
-  items: IProduct[]
-  payOnline: (obj: T) => T
-  payCash: (obj: T) => T
-}
-
-// отображение элемента разметки
-
-interface IView {
-  render(data?: object): HTMLElement;
-}

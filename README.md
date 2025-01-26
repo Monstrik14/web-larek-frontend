@@ -101,15 +101,7 @@ yarn build
 
 Интерфейс пользовательских сценариев IUserScenario
 
-    - cardsCatalog: IProduct[] - массив карточек товаров приложения
-    - buyButton(): void - метод
-    - addToBasket(value: IProduct): void - метод добавления товара в корзину
-    - placeOrder(): void - метод оформления товара
-    - deleteFromBasket(): void - метод удаления товара из корзины
-    - clearBasket(): void - метод очистки корзины
-    - getItems(): void - метод получения товаров по их id
-    - validateUserInfo(data: keyof IUserInfo, value: string): boolean - метод валидации информации о пользователе
-    - goForNewThings(): void - метод похода(возврата в каталог на стартовую страницу) за новыми покупками
+
 
 ## Модели данных (классы)
 
@@ -149,5 +141,5 @@ yarn build
     - order: change - изменение заказа через удаление позиций в списке по клику на иконку корзины
     - order: submit - подтверждение оформления заказа
 
-    - contatcs: submit - подтверждение и отправка контактной информации о пользователе 
+    - contacts: submit - подтверждение и отправка контактной информации о пользователе 
 

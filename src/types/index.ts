@@ -1,50 +1,46 @@
+type category =
+	| 'другое'
+	| 'софт-скил'
+	| 'дополнительное'
+	| 'кнопка'
+	| 'хард-скил';
 
-type сategories =
-| 'soft-skill'
-| 'hard-skill'
-| 'additional'
-| 'other'
-| 'button';
-
-export interface IMainPage {
-  cards: IProduct[];
-  total: number; 
+interface IUserInfo {
+	payment: 'cash' | 'card';
+	address: string;
+	mail: string;
+	phone: number;
 }
 
-export interface IProduct {
-  id: string;
-  title: string;
-  image: string;
-  description: string;
-  category: сategories;
-  price: number | null;
-  buyProductBtn: string;
+interface IOrder {
+	payment: 'cash' | 'card';
+	mail: string;
+	phone: string;
+	address: string;
+	total: number;
+	items: string[]; 
 }
 
-export interface IBasket {
-  items: string[];
-  total: number | null;
+interface IProduct {
+	id: string;
+	title: string;
+	category: category;
+	description: string;
+	price: number | null;
+	image: string;
+	buyButton: string;
+}
+interface IBasket {
+	items: IProduct[];
+	total: number | null;
 }
 
-export interface IOrder{
-  items: string[]
-  address: string;
-  email: string;
-  phone: string;
-  paymentMethod: 'cash' | 'card'
-  total: number;
+interface IOrderResult {
+	id: string;
+	total: number | null;
 }
 
-export interface IValidation {
-  errors: string[]; 
-	validation: boolean; 
+interface IPage {
+	cards: IProduct[];
+	total: number;
 }
-
-export interface IFinalOrder {
-  id: string;
-  total: number | null;
-}
-
-
-
-

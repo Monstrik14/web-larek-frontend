@@ -1,7 +1,7 @@
-import { createElement, ensureElement } from "../utils/utils";
-import { IBasket } from "../types";
-import { IEvents } from "./base/events";
-import { Component } from "./base/Component";
+import { createElement, ensureElement } from "../../utils/utils";
+import { IBasket } from "../../types";
+import { IEvents } from "../base/events";
+import { Component } from "../base/Component";
 
 export class Cart extends Component<IBasket> {
   protected _finalPrice: HTMLElement; 

@@ -1,5 +1,5 @@
-import { IProduct, IOrder, IUserInfo } from "../types"
-import { IEvents } from "./base/events";
+import { IProduct, IOrder, IUserInfo } from "../../types"
+import { IEvents } from "../base/events";
 
 export class AppData {
 protected _cartItems: IProduct[] = []; 

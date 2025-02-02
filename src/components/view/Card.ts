@@ -1,7 +1,7 @@
-import { ICardAction, IProduct, category } from "../types";
-import { Component } from "./base/Component";
-import { ensureElement } from "../utils/utils";
-import { categoryMap } from "../utils/constants";
+import { ICardAction, IProduct, category } from "../../types";
+import { Component } from "../base/Component";
+import { ensureElement } from "../../utils/utils";
+import { categoryMap } from "../../utils/constants";
 
 export class Card extends Component<IProduct> {
   

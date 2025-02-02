@@ -11,7 +11,7 @@ protected _userData: Partial<IOrder> = {
   address: '' 
 };
 protected _validationErrors: Partial<Record<keyof IOrder, string>>;
-protected currentpreview: string = '';
+protected currentpreview: string = ''; 
 
 constructor(protected events: IEvents) {
 }

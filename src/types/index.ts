@@ -9,11 +9,19 @@ export type CategoryMap = {
 		 [Key in  category]: string;
 };
 
+export interface IAction {
+  onClick: () => void;
+}
+
 export interface IUserInfo {
 	payment: 'cash' | 'card';
 	address: string;
 	email: string;
 	phone: number;
+}
+
+export interface ISucces {
+	total: number;
 }
 
 export interface IOrder {
@@ -32,7 +40,8 @@ export interface IProduct {
 	description: string;
 	price: number | null;
 	image: string;
-	buyButton: string;
+	button: string;
+	orderIndex?: number;
 }
 export interface IBasket { 
 	items: IProduct[];

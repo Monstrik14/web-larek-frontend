@@ -40,7 +40,7 @@ get formErrors() { return this._validationErrors }
 
 setPreviewItem(card: IProduct) {
   this.currentpreview = card.id;
-  this.events.emit('preview:change', card);
+  this.events.emit('preview:update', card);
 }
 
 getCartItemIds() {

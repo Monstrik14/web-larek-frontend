@@ -54,7 +54,7 @@ export interface IOrderResult {
 }
 
 export interface IPage {
-	cards: IProduct[];
+	items: IProduct[];
 	total: number;
 }
 

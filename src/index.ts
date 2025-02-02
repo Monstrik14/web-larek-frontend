@@ -52,7 +52,7 @@ const success = new Success(cloneTemplate<HTMLDivElement>(successModalTemplate),
 // 11. В объекте api вызываем метод getProducts(), при успешном выполнении запроса кладем в поле объекта AppState.items массив карточек и отправляем событие ( items:changed — событие, которое происходит при изменении списка товаров и вызывает перерисовку списка товаров на странице.)
 //return getProducts {total: 10, items: Array(10)}
 api.getProducts().then((data: IPage) => {
-	appData.productList = data.cards
+	appData.productList = data.items
 })
 
 //  12. Слушаем событие (items:changed) и  в объекте appModelPage(который хранит в себе основные элементы страницы) в поле catalog(это сеттер который пушит карточки на страницу)  говорим: возьми все карточки которые сейчас лежит в appModel(в поле items) перебери их, и подставь в поля карточки данные из сервера. С помощью рендера карточка наполняется всеми остальными данными. Так же в объект карточки передается событие сard:selected и будет вызвано при клике на нее.(ПОДУМАТЬ КАК НАПОЛНЯТЬ КАРТОЧКУ СРАЗУ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
@@ -179,22 +179,22 @@ events.on('basket:toOrder', () => {
 //   Присваивает значение поля payment из модели приложения (appModel) свойству payment объекта order.)
 events.on('input:error', (errors: Partial<IUserInfo>) => {
 	const { payment, address, email, phone } = errors;
-	order.valid = !payment && !address;
-	contacts.valid = !email && !phone;
-	order.errors = Object.values({ address, payment })
+	order.validity = !payment && !address;
+	contacts.validity = !email && !phone;
+	order.errorMessage = Object.values({ address, payment })
 		.filter((i) => !!i)
 		.join('; ');
-	contacts.errors = Object.values({ phone, email })
+	contacts.errorMessage = Object.values({ phone, email })
 		.filter((i) => !!i)
 		.join('; ');
-	order.payment = appData.getField();
+	order.paymentMethod = appData.getField();
 });
 
 
 // 24. Слушает событие orderInput:change (событие, возникающее при вводе данных в форму заказа Order и контактов Contacts. С помощью данного события активируется валидация.)
 events.on('orderInput:change',
 	(data: { field: keyof IUserInfo; value: string }) => {
-		appData.addOrderField(data.field, data.value as payment);
+		appData.updateOrderField(data.field, data.value as 'cash' | 'card');
 	}
 );
 
@@ -212,17 +212,17 @@ events.on('order:submit', () => {
 events.on('contacts:submit', () => {
 	const payload = {
     ...appData.getUser(),
-    total: appData.totalBasketPrice,
-    items: appData.getBasketId()
+    total: appData.totalCartPrice,
+    items: appData.getCartItemIds()
   };
 	api
 		.postOrder(payload)
-		.then((result) => {
+		.then((result: IOrder) => {
 			events.emit('order:success', result);
-			appData.clearBasket();
-			page.basketCounter = appData.countBasket;
+			appData.clearCart();
+			page.cartCount = appData.countBasket;
 		})
-		.catch((error) => {
+		.catch((error: unknown) => {
 			console.error('Ошибка отправки заказа:', error);
 		});
 });
@@ -234,12 +234,8 @@ events.on('order:success', (result: ISucces) => {
 		}),
 	});
 	// Очистка форм и данных после оформления заказа
-	order.clear();
-	contacts.clear();
-	appData.clearOrder();
-	appData.clearBasket();
+	order.clearData();
+	contacts.clearFields();
+	appData.resetOrder();
+	appData.clearCart();
 });
-
-function getBasketId() {
-	throw new Error('Function not implemented.');
-}

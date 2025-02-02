@@ -1,6 +1,6 @@
-import { IUserInfo } from "../types";
+import { IUserInfo } from "../../types";
 import { Form } from "./Form";
-import { IEvents } from "./base/events";
+import { IEvents } from "../base/events";
 
 export class Contacts extends Form<IUserInfo> {
   constructor(_container: HTMLFormElement, protected events: IEvents) {

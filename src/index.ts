@@ -1,18 +1,18 @@
 import { ICardAction, IOrder, ISuccess, IUserInfo } from './types/index';
-import { AppData } from './components/AppData';
-import { Cart } from './components/Cart';
-import { Contacts } from './components/Contacts';
-import { Modal } from './components/Modal';
-import { Page } from './components/Page';
+import { AppData } from './components/model/AppData';
+import { Cart } from './components/view/Cart';
+import { Contacts } from './components/view/Contacts';
+import { Modal } from './components/view/Modal';
+import { Page } from './components/view/Page';
 import { EventEmitter } from './components/base/events';
-import { WebLarekApi } from './components/WebLarekApi';
+import { WebLarekApi } from './components/model/WebLarekApi';
 import './scss/styles.scss';
 import { API_URL, CDN_URL } from './utils/constants';
 import { cloneTemplate, ensureElement } from './utils/utils';
-import {  Success } from './components/Success';
+import {  Success } from './components/view/Success';
 import { IPage, IProduct } from './types';
-import { Order } from './components/Order';
-import { Card, CardOnPage, FullCard } from './components/Card';
+import { Order } from './components/view/Order';
+import { Card, CardOnPage, FullCard } from './components/view/Card';
 
 const body = ensureElement<HTMLElement>('body');
 const modalContainer = ensureElement<HTMLElement>('#modal-container')

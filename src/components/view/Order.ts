@@ -1,7 +1,7 @@
-import { IOrder } from "../types";
-import { ensureElement } from "../utils/utils";
+import { IOrder } from "../../types";
+import { ensureElement } from "../../utils/utils";
 import { Form } from "./Form";
-import { IEvents } from "./base/events";
+import { IEvents } from "../base/events";
 
 export class Order extends Form<Partial<IOrder>> {
   protected btnCard: HTMLButtonElement;

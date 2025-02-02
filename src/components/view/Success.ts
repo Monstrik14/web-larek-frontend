@@ -1,7 +1,7 @@
-import { IAction, ISuccess } from "../types";
-import { ensureElement } from "../utils/utils";
-import { Component } from "./base/Component";
-import { IEvents } from "./base/events";
+import { IAction, ISuccess } from "../../types";
+import { ensureElement } from "../../utils/utils";
+import { Component } from "../base/Component";
+import { IEvents } from "../base/events";
 
 export class Success extends Component<ISuccess> {
   protected _closeButton: HTMLButtonElement;

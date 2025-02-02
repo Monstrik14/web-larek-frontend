@@ -1,7 +1,7 @@
-import { IValidation } from "../types";
-import { ensureElement } from "../utils/utils";
-import { Component } from "./base/Component";
-import { IEvents } from "./base/events";
+import { IValidation } from "../../types";
+import { ensureElement } from "../../utils/utils";
+import { Component } from "../base/Component";
+import { IEvents } from "../base/events";
 
 export class Form<T> extends Component<IValidation> {
   protected _errorContainer: HTMLElement;

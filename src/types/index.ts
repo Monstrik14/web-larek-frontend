@@ -55,3 +55,8 @@ export interface ICardAction {
    title: string;
    index?: number;
   }
+
+export interface IValidation {
+		valid: boolean; 
+		errors: string[]; 
+	}

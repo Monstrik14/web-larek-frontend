@@ -1,27 +1,31 @@
-type category =
+export type category =
 	| 'другое'
 	| 'софт-скил'
 	| 'дополнительное'
 	| 'кнопка'
 	| 'хард-скил';
 
-interface IUserInfo {
+export type CategoryMap = {
+		 [Key in  category]: string;
+};
+
+export interface IUserInfo {
 	payment: 'cash' | 'card';
 	address: string;
-	mail: string;
+	email: string;
 	phone: number;
 }
 
-interface IOrder {
+export interface IOrder {
 	payment: 'cash' | 'card';
-	mail: string;
+	email: string;
 	phone: string;
 	address: string;
 	total: number;
 	items: string[]; 
 }
 
-interface IProduct {
+export interface IProduct {
 	id: string;
 	title: string;
 	category: category;
@@ -30,17 +34,24 @@ interface IProduct {
 	image: string;
 	buyButton: string;
 }
-interface IBasket {
+export interface IBasket { 
 	items: IProduct[];
 	total: number | null;
 }
 
-interface IOrderResult {
+export interface IOrderResult {
 	id: string;
 	total: number | null;
 }
 
-interface IPage {
+export interface IPage {
 	cards: IProduct[];
 	total: number;
 }
+
+export interface ICardAction {
+   onClick: (event: MouseEvent) => void;
+   price: number | null;
+   title: string;
+   index?: number;
+  }

@@ -1,21 +1,21 @@
-import { IBasket } from "../types";
 import { createElement, ensureElement } from "../utils/utils";
-import { Component } from "./base/Component";
+import { IBasket } from "../types";
 import { IEvents } from "./base/events";
+import { Component } from "./base/Component";
 
-export class Basket extends Component<IBasket> {
-  protected _productList: HTMLElement; 
+export class Cart extends Component<IBasket> {
   protected _finalPrice: HTMLElement; 
   protected _orderButton?: HTMLButtonElement;
+  protected _productList: HTMLElement; 
 
   constructor(_container: HTMLElement, protected events: IEvents) {
     super(_container);
-    this._productList = ensureElement<HTMLElement>('.basket__list', this._container);
     this._finalPrice = ensureElement<HTMLElement>('.basket__price');
+    this._productList = ensureElement<HTMLElement>('.basket__list', this._container);
     this._orderButton = _container.querySelector('.basket__button') as HTMLButtonElement;
   
     if (this._orderButton) {
-      this._orderButton.addEventListener('click', () => this.events.emit('basket:toOrder'));
+      this._orderButton.addEventListener('click', () => this.events.emit('basket:checkout'));
     }
 
     this.productList = [];

@@ -1,7 +1,7 @@
-import { IOrder, IPage, IProduct } from "../types";
 import { Api, ApiListResponse } from "./base/api";
+import { IOrder, IPage, IProduct } from "../types";
 
-export class LarekApi extends Api {
+export class WebLarekApi extends Api {
   protected _cdn: string;
   constructor (baseUrl: string, cdn: string, options?: RequestInit) {
     super(baseUrl, options);

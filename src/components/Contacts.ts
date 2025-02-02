@@ -7,12 +7,12 @@ export class Contacts extends Form<IUserInfo> {
     super(_container, events);
   }
 
-  set phoneNumber(value: string) {
-    (this._container.elements.namedItem('phone') as HTMLInputElement).value = value;
-  }
-
+  
   set emailAddress(value: string) {
     (this._container.elements.namedItem('email') as HTMLInputElement).value = value;
+  }
+  set phoneNumber(value: string) {
+    (this._container.elements.namedItem('phone') as HTMLInputElement).value = value;
   }
   
   clearFields() {

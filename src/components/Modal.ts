@@ -17,17 +17,17 @@ export class Modal extends Component<IModal> {
       }
     });
   }
-  set setContent(value: HTMLElement) {
+  set content(value: HTMLElement) {
     this._contentContainer.replaceChildren(value);
+  }
+  
+  hideModal() {
+    this._container.classList.remove('modal_active');
+    this.events.emit('modal:close');
   }
   showModal() {
     this._container.classList.add('modal_active');
     this.events.emit('modal:open');
-  }
-
-  hideModal() {
-    this._container.classList.remove('modal_active');
-    this.events.emit('modal:close');
   }
 
   render(data: IModal): HTMLElement {

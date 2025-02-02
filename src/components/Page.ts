@@ -1,23 +1,22 @@
-import { IProduct } from "../types";
 import { ensureElement } from "../utils/utils";
-import { Component } from "./base/Component";
 import { IEvents } from "./base/events";
+import { Component } from "./base/Component";
 
 export class Page extends Component<HTMLElement> {
-  protected _cartCount: HTMLElement;
   protected _cardContainer: HTMLElement;
-  protected _pageContainer: HTMLElement;
+  protected _cartCount: HTMLElement;
   protected _cart: HTMLElement;
+  protected _pageContainer: HTMLElement;
 
   constructor(_container: HTMLElement, protected events: IEvents) {
     super(_container);
-    this._cartCount = ensureElement<HTMLElement>('.header__basket-counter');
     this._cardContainer = ensureElement<HTMLElement>('.gallery');
-    this._pageContainer = ensureElement<HTMLElement>('.page__wrapper');
+    this._cartCount = ensureElement<HTMLElement>('.header__basket-counter');
     this._cart = ensureElement<HTMLElement>('.header__basket');
+    this._pageContainer = ensureElement<HTMLElement>('.page__wrapper');
 
     if (this._cart) {
-      this._cart.addEventListener('click', () => this.events.emit('basket:open'));
+      this._cart.addEventListener('click', () => this.events.emit('basket:show'));
     }
   }
 

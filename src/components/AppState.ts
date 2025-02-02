@@ -88,13 +88,13 @@ validateUserData(): boolean {
      errors.phone = 'Необходимо указать номер телефона';
     }
     this._validationErrors = errors;
-    this.events.emit('input:error', this.formErrors);
+    this.events.emit('input:validationError', this.formErrors);
     return Object.keys(errors).length === 0;
    }
 
 resetOrder() {
   this._userData = { payment: 'cash', email: '', phone: '', address: '', total: 0, items: [] };
-  this.events.emit('inpit:error')
+  this.events.emit('inpit:validationError')
 } 
 
 updateOrderField(field: keyof IUserInfo, value: string & 'cash' | 'card') {

@@ -1,4 +1,4 @@
-import { IAction, ICardAction, IOrder, ISucces, IUserInfo } from './types/index';
+import { IAction, ICardAction, IOrder, ISuccess, IUserInfo } from './types/index';
 import { Contacts } from './components/Contacts';
 import { AppState } from './components/AppState';
 import { Basket } from './components/Basket';
@@ -227,7 +227,7 @@ events.on('contacts:submit', () => {
 		});
 });
 
-events.on('order:success', (result: ISucces) => {
+events.on('order:success', (result: ISuccess) => {
 	modal.render({
 		content: success.render({
 			total: result.total,

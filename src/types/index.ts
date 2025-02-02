@@ -20,7 +20,7 @@ export interface IUserInfo {
 	phone: number;
 }
 
-export interface ISucces {
+export interface ISuccess {
 	total: number;
 }
 
@@ -46,6 +46,10 @@ export interface IProduct {
 export interface IBasket { 
 	items: IProduct[];
 	total: number | null;
+}
+
+export interface IModal {
+	content: HTMLElement
 }
 
 export interface IOrderResult {
